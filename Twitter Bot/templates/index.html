@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>AI & LLM News Twitter Bot</title>
+   <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+   <!-- Animate CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+   <div class="background"></div>
+   <div class="container mt-5">
+      <div class="d-flex justify-content-end mb-4">
+         <a href="{{ url_for('logout', _external=True) if 'logout' in current_app.url_map._rules_by_endpoint else '#' }}" class="btn btn-danger">Logout</a>
+      </div>      
+      <div class="jumbotron jumbotron-fluid mb-4">
+         <div class="card-body">
+             <h1 class="display-6 text-primary" align = "center"><img src="https://www.insegment.com/blog/wp-content/uploads/2020/11/chatbot-marketing.gif" alt="" width="50" height="50">Twitter Pal</h1>
+             <p class="lead" align = "center">Generate Tweets based on latest AI and ML news using OpenAI GPT-3.5 Model.</p>
+         </div>
+      </div>  
+      <div class="d-flex justify-content-center mb-4">
+         <button id="generate-tweet-btn" class="btn btn-primary">Generate Tweet</button>
+      </div>
+      <div id="news-list" class="list-group mb-5">
+         {% for article in news %}
+               <a href="{{ article.url }}" class="list-group-item list-group-item-action" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to see the full article">{{ article.name }}</a>
+         {% endfor %}
+      </div>
+      <h2 class="mb-4 text-center">Tweet Preview</h2>
+      <div class="card" style="width: 100%;">
+         <div class="card-body">
+            <p id="tweet-preview" class="card-text">{{ tweet }}</p>
+         </div>
+      </div>
+      <br>
+      <br>
+      <div class="d-flex justify-content-center mb-4">
+         <button id="post-tweet-btn" class="btn btn-success animate__animated animate__fadeIn">Post Tweet</button>
+     </div>
+   </div>
+   <div class="splash-screen">
+      <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2" id="loading-message">Loading...</p>
+   </div>
+   <!-- Toast -->
+   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+         <div class="toast-header">
+            <strong class="me-auto">Notification</strong>
+            <small class="text-muted">Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+         </div>
+         <div class="toast-body">
+            The message will be here.
+         </div>
+      </div>
+   </div>
+   <!-- Bootstrap JS -->
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+   <!-- Custom JS -->
+   <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
