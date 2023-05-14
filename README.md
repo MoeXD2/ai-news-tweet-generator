@@ -49,7 +49,3 @@ flask run
 2. Click the "Generate Tweet" button to fetch the latest AI and LLM news and generate a tweet based on the most interesting article.
 3. Review the generated tweet, and click the "Post Tweet" button to post it to your Twitter account.
 4. Log out when you're finished.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
