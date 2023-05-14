@@ -13,7 +13,7 @@ AI News Tweet Generator is a Flask web application that uses OpenAI's GPT-3.5-tu
 
 1. Clone the repository to your local machine:
 ```
-git clone https://github.com/yourusername/ai-news-tweet-generator.git
+git clone https://github.com/MoeXD2/ai-news-tweet-generator.git
 ```
 
 2. Change to the project directory:
